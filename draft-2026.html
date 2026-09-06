@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="#FDBB30">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draft Recap 2026 - PEN15 League</title>
+<style>
+:root{
+  --black:#0B1315; --surface:#111B1E; --raised:#17252A; --line:#22343A;
+  --gold:#FDBB30; --gold-deep:#D9971C; --gold-dim:#8A6A1C;
+  --ink:#EDEFEF; --muted:#9FA8AB; --dim:#6E787C; --grey:#C5C6C8;
+  --pos:#7FD1A8; --neg:#E68A7C; --mfl:#7FA8D1;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--black);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+.nav{border-bottom:1px solid var(--line);background:rgba(11,19,21,.92);position:sticky;top:0;z-index:20}
+.nav .wrap{display:flex;gap:26px;align-items:center;height:52px}
+.nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--grey)}
+.nav a.on{color:var(--gold);border-bottom-color:var(--gold)}
+.hero{position:relative;overflow:hidden;padding:70px 0 58px;
+  background:radial-gradient(120% 90% at 8% -10%, rgba(253,187,48,.20) 0%, rgba(253,187,48,0) 58%),
+    radial-gradient(90% 70% at 100% 0%, rgba(253,187,48,.09) 0%, rgba(253,187,48,0) 60%),var(--black)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,var(--gold) 0%,var(--gold-deep) 42%,rgba(253,187,48,0) 100%)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 20px;font-weight:600}
+h1{font-size:clamp(42px,8.6vw,86px);line-height:.94;letter-spacing:-.035em;margin:0 0 22px;font-weight:800}
+h1 .g{color:var(--gold);display:block}
+.dek{font-size:clamp(17px,2.3vw,21px);color:var(--grey);max-width:62ch;margin:0 0 8px;line-height:1.55}
+h2{font-size:clamp(29px,4.6vw,44px);letter-spacing:-.03em;line-height:1.06;margin:0 0 10px;font-weight:800}
+h2 .n{font-family:var(--mono);font-size:13px;color:var(--gold);display:block;
+  letter-spacing:.2em;margin-bottom:14px;font-weight:600}
+.sub{color:var(--muted);max-width:70ch;margin:0 0 34px;font-size:16.5px}
+h3{font-size:21px;letter-spacing:-.015em;margin:0 0 8px;font-weight:700}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -22px;padding:0 22px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:640px}
+th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);font-weight:600;padding:0 12px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px;border-bottom:1px solid rgba(34,52,58,.6);vertical-align:middle}
+tbody tr:hover td{background:rgba(253,187,48,.05)}
+.num{font-family:var(--mono);font-size:14px;text-align:right;white-space:nowrap}
+th.num{text-align:right}
+.rk{font-family:var(--mono);color:var(--dim);font-size:13px;width:38px}
+.who b{font-weight:700}
+.who .hd{display:block;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:2px}
+.dag{color:var(--gold);font-size:11px;vertical-align:2px;margin-left:3px;cursor:help}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+.rings{color:var(--gold);letter-spacing:.15em;font-size:15px}
+.bar{display:block;height:4px;background:rgba(255,255,255,.07);border-radius:2px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:2px}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  padding:2px 7px;border-radius:20px;margin-left:9px;vertical-align:1px}
+.tag.ch{background:var(--gold);color:#0B1315;font-weight:700}
+.tag.ru{background:rgba(253,187,48,.16);color:var(--gold)}
+.yr-h{font-size:22px;margin:34px 0 12px;display:flex;align-items:center;gap:12px}
+.era{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  padding:3px 8px;border-radius:20px;font-weight:600}
+.era.mfl{background:rgba(127,168,209,.14);color:var(--mfl);border:1px solid rgba(127,168,209,.3)}
+.era.sl{background:rgba(253,187,48,.10);color:var(--gold-dim);border:1px solid rgba(253,187,48,.18)}
+.matrix{min-width:860px;font-size:13px}
+.matrix th.corner{font-size:10px;color:var(--dim)}
+.matrix th.mh{padding:0 0 10px;text-align:center;vertical-align:bottom}
+.matrix th.mh span{display:inline-block;font-size:11px;letter-spacing:.02em;text-transform:none}
+.matrix th.mr{text-align:left;padding:8px 12px 8px 0;font-family:var(--sans);font-size:13.5px;
+  text-transform:none;letter-spacing:0;color:var(--ink);font-weight:700;
+  border-bottom:1px solid rgba(34,52,58,.6);white-space:nowrap}
+.matrix td{text-align:center;font-family:var(--mono);font-size:12.5px;padding:9px 6px;
+  border:2px solid var(--black);color:var(--ink)}
+.matrix td.self{background:repeating-linear-gradient(45deg,#17252A,#17252A 3px,#0B1315 3px,#0B1315 6px)}
+.matrix td.none{color:var(--dim);background:var(--surface)}
+.matrix td.sweep{box-shadow:inset 0 0 0 2px var(--gold);font-weight:700}
+.matrix td.swept{box-shadow:inset 0 0 0 2px rgba(230,138,124,.55)}
+.matrix td.tot,.matrix th.tot{background:var(--raised);font-weight:700}
+.legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:16px;font-size:13px;color:var(--muted)}
+.legend .sw{display:inline-block;width:26px;height:12px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.champs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.champ{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;position:relative}
+.champ.multi{border-color:var(--gold-dim);background:linear-gradient(160deg,rgba(253,187,48,.10),var(--surface) 62%)}
+.champ.mflc{border-left:3px solid var(--mfl)}
+.champ .yr{font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:.18em}
+.champ .who{font-size:24px;font-weight:800;letter-spacing:-.025em;margin:6px 0 3px}
+.champ .rec{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card p{font-size:15px;color:var(--grey);margin:10px 0 0;line-height:1.6}
+.card .meta{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.05em}
+.awards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.award{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.award .nm{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:9px}
+.award .win{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.award p{font-size:14.5px;color:var(--grey);margin:0;line-height:1.55}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 18px}
+.kpi .v{font-size:34px;font-weight:800;letter-spacing:-.03em;color:var(--gold);line-height:1}
+.kpi .k{font-size:12.5px;color:var(--muted);margin-top:9px;line-height:1.35}
+.note{background:var(--raised);border:1px dashed var(--line);border-radius:12px;
+  padding:20px 22px;font-size:14.5px;color:var(--muted);line-height:1.6}
+.note b{color:var(--grey)}
+footer{padding:52px 0 70px;border-top:1px solid var(--line);color:var(--dim);font-size:13.5px;line-height:1.7}
+footer a{color:var(--muted)}
+.memoriam{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+/* ---------- draft page additions ---------- */
+.grades{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.gcard.hi{border-color:var(--gold-dim);background:linear-gradient(160deg,rgba(253,187,48,.08),var(--surface) 60%)}
+.gcard.lo{border-color:rgba(230,138,124,.28)}
+.ghd{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.gname{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.gletter{font-size:40px;font-weight:800;letter-spacing:-.04em;color:var(--gold);line-height:1}
+.gcard.lo .gletter{color:var(--neg)}
+.axes{margin:18px 0 16px;display:grid;gap:7px}
+.ax{display:flex;align-items:center;gap:10px}
+.axl{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);width:88px;flex:none}
+.axb{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.axb i{display:block;height:100%;background:var(--gold);border-radius:3px}
+.gcard p{font-size:14.5px;color:var(--grey);margin:0 0 10px;line-height:1.6}
+.gcard p:last-child{margin-bottom:0}
+.board{min-width:900px;font-size:12px}
+.board th.corner{font-size:10px;color:var(--dim);width:34px}
+.board th.bh{padding:0 0 10px;text-align:center}
+.board th.bh span{display:inline-block;font-size:11px;text-transform:none;color:var(--dim)}
+.board th.br{text-align:center;padding:8px 6px;font-family:var(--mono);font-size:12px;
+  color:var(--gold);border-bottom:1px solid rgba(34,52,58,.6)}
+.board td{text-align:center;padding:8px 5px;border:2px solid var(--black);line-height:1.25}
+.board td b{display:block;font-size:11.5px;font-weight:700;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;max-width:80px;margin:0 auto}
+.board td i{display:block;font-family:var(--mono);font-size:9px;font-style:normal;opacity:.62;margin-top:2px}
+.board td.unmade{background:repeating-linear-gradient(45deg,#0F1A1D,#0F1A1D 4px,#0B1315 4px,#0B1315 8px);color:#3E4649}
+.board td[data-tip]{cursor:pointer}
+.board td[data-tip]:hover,.board td.lit{outline:2px solid var(--gold);outline-offset:-2px}
+.bt{position:fixed;z-index:60;pointer-events:none;opacity:0;transform:translateY(3px);
+  transition:opacity .12s ease,transform .12s ease;background:var(--raised);
+  border:1px solid var(--gold-dim);border-radius:9px;padding:10px 13px;max-width:250px;
+  box-shadow:0 10px 28px rgba(0,0,0,.55);line-height:1.4}
+.bt.on{opacity:1;transform:translateY(0)}
+.bt .p{display:block;font-size:14px;font-weight:700;color:var(--ink)}
+.bt .m{display:block;font-family:var(--mono);font-size:11px;color:var(--gold);margin-top:4px}
+.bt .s{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.trade{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:12px;padding:26px}
+.trade .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.trade .ttl{font-size:23px;font-weight:800;letter-spacing:-.02em}
+.trade .date{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.06em;white-space:nowrap}
+.receipt{background:rgba(253,187,48,.07);border:1px solid rgba(253,187,48,.22);
+  border-radius:9px;padding:14px 16px;font-size:15px;margin:16px 0 14px;line-height:1.6}
+.receipt b{color:var(--gold)}
+.receipt .rl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:5px}
+.kick{font-size:15.5px;color:var(--grey);margin:0;line-height:1.6}
+.preds{counter-reset:p;display:grid;gap:12px}
+.pred{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px 18px 58px;position:relative;font-size:15.5px;color:var(--grey);line-height:1.6}
+.pred::before{counter-increment:p;content:counter(p,decimal-leading-zero);position:absolute;
+  left:20px;top:18px;font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700}
+.pred b{color:var(--ink)}
+
+@media(max-width:860px){
+  .champs{grid-template-columns:repeat(2,1fr)}
+  .cards,.awards,.grades{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  body{font-size:16px} section{padding:50px 0} .nav .wrap{gap:18px}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="index.html">State of the League</a>
+  <a href="draft-2026.html" class="on">Draft Recap 2026</a>
+</div></nav>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">five rounds · eight days · fifty-three picks</p>
+    <h1>Draft<br>Recap<span class="g">2026</span></h1>
+    <p class="dek">The draft opened on 10 August and the last pick landed on 18 August. It was
+      scheduled for sixty picks and it stopped at fifty-three…</p>
+    <p class="dek" style="font-size:16.5px;color:var(--muted);margin-top:14px;max-width:64ch">
+      Graded against Sleeper's own board. Complaints go to Sleeper.</p>
+  </div>
+</div>
+
+<!-- ============ TEBOW ============ -->
+<section><div class="wrap">
+  <h2><span class="n">01</span>The sixteenth pick</h2>
+  <p class="sub">Before anything else gets graded, this needs dealing with.</p>
+  <div class="trade">
+    <div class="hd"><div class="ttl">Kelly drafted Tim Tebow</div><div class="date">ROUND 2, PICK 16</div></div>
+    <div class="receipt"><span class="rl">For the record</span>
+      Tim Tebow is <b>34 years old</b> and carries <b>twelve years</b> of listed experience.
+      He was taken in the second round of a rookie draft, ahead of forty other players who
+      are still playing.</div>
+    <p class="kick">Kelly followed it with Cole Kelley at 28 and a kicker at 40. One of his four
+      picks was an actual rookie, and his class averages 27 years old.</p>
+  </div>
+</div></section>
+
+<!-- ============ GRADES ============ -->
+<section><div class="wrap">
+  <h2><span class="n">02</span>The grades</h2>
+  <p class="sub"><b>Value</b> measures where you took him against the board, <b>timeline</b>
+    weighs the ages against your record, <b>capital</b> counts the picks you brought, and
+    <b>construction</b> asks whether the class adds up to anything.</p>
+  <div class="grades">
+<div class="gcard hi">
+<div class="ghd"><div><div class="gname">Creger</div></div><div class="gletter">A-</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:92%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:84%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:70%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:76%"></i></span></div>
+</div>
+<p>He posted the best value in the draft by a wide margin and took Malik Willis at 47 when the board had him at 12.</p>
+<p>He made five picks on a roster that has won three titles, and two of them were veterans. Everything he did points the same direction.</p>
+</div>
+<div class="gcard hi">
+<div class="ghd"><div><div class="gname">Sam</div></div><div class="gletter">B+</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:74%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:88%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:82%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:72%"></i></span></div>
+</div>
+<p>He held the first overall pick and used it on Jeremiyah Love, the top player on the board.</p>
+<p>Six picks, six rookies, average age 22.5. He has never won a title and this is the first draft that looks like a plan.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Andrew</div></div><div class="gletter">B</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:86%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:70%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:58%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:66%"></i></span></div>
+</div>
+<p>He drafted four times, came away with the second-best value in the draft, and took Braelon Allen at 33 when the board had him at 13.</p>
+<p>He has made one trade in eleven seasons, so every one of these picks was his own.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Kevin</div></div><div class="gletter">B</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:78%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:80%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:52%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:64%"></i></span></div>
+</div>
+<p>Four picks, four rookies, and a positive value score across all of them.</p>
+<p>He has made thirty-four trades in his career and arrived at this draft with nothing but his own selections.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Matt</div></div><div class="gletter">C+</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:80%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:58%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:24%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:44%"></i></span></div>
+</div>
+<p>He had two picks, fewest in the league, and turned the second one into Keaton Mitchell at 48 when the board had him at 17.</p>
+<p>Two swings is not a draft. He won the title last year and drafted like somebody who thinks that settles it.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Blue</div></div><div class="gletter">C+</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:40%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:84%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:90%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:62%"></i></span></div>
+</div>
+<p>Seven picks, more than anybody, and six of them rookies at an average age of 22.2.</p>
+<p>He also reached more than anybody at that volume, taking Chris Bell at 19 with the board at 33 and Malachi Fields at 20 with the board at 31.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Justin</div></div><div class="gletter">C</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:48%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:76%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:74%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:58%"></i></span></div>
+</div>
+<p>Five picks, four rookies, three of them receivers.</p>
+<p>He bought a second and a third off other people and used them on players the board had rated lower than where he took them.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Glen</div></div><div class="gletter">C</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:46%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:68%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:72%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:60%"></i></span></div>
+</div>
+<p>Five picks and a slightly negative value score, headlined by Germie Bernard at 14 when the board had him at 28.</p>
+<p>He won the 2019 title and has gone 45-60 since, and this draft does not obviously change that.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Daniel</div></div><div class="gletter">C-</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:30%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:72%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:50%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:48%"></i></span></div>
+</div>
+<p>He took Brenen Thompson at 18 when the board had him at 45, which is the biggest reach of the draft by eleven slots.</p>
+<p>Four picks, three receivers and a kicker. He has two titles and five career trades, so the shopping list is usually shorter than this.</p>
+</div>
+<div class="gcard ">
+<div class="ghd"><div><div class="gname">Teague</div></div><div class="gletter">C-</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:52%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:22%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:54%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:50%"></i></span></div>
+</div>
+<p>He drafted Aaron Rodgers at pick 27. Rodgers is 42 years old and has been in the league for twenty-one seasons.</p>
+<p>That single pick dragged his class to an average age of 28.7, the oldest in the draft, on a roster that has never made a final.</p>
+</div>
+<div class="gcard lo">
+<div class="ghd"><div><div class="gname">Corey</div></div><div class="gletter">D+</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:22%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:64%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:30%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:42%"></i></span></div>
+</div>
+<p>Three picks, fewest of anybody who kept their own, and the worst value score in the draft.</p>
+<p>He is 61-79-1 across eleven seasons and has never reached a final. This was a year to accumulate and he sold instead.</p>
+</div>
+<div class="gcard lo">
+<div class="ghd"><div><div class="gname">Kelly</div></div><div class="gletter">D</div></div>
+<div class="axes">
+<div class="ax"><span class="axl">Value</span><span class="axb"><i style="width:56%"></i></span></div>
+<div class="ax"><span class="axl">Timeline</span><span class="axb"><i style="width:16%"></i></span></div>
+<div class="ax"><span class="axl">Capital</span><span class="axb"><i style="width:50%"></i></span></div>
+<div class="ax"><span class="axl">Construction</span><span class="axb"><i style="width:26%"></i></span></div>
+</div>
+<p>He used the sixteenth pick of the draft on Tim Tebow, who is 34 and last took a competitive snap a very long time ago.</p>
+<p>He followed it with Cole Kelley at 28 and a kicker at 40. One of his four picks was a rookie, and his class averages 27 years old.</p>
+</div>
+  </div>
+  <div class="note" style="margin-top:22px">
+    The twelve of you average a <b>2.27</b>, which is a C+. One A-, one D, and the person who
+    won the title last year came away with two picks and a C+.
+  </div>
+</div></section>
+
+<!-- ============ BOARD ============ -->
+<section><div class="wrap">
+  <h2><span class="n">03</span>The board</h2>
+  <p class="sub">Every pick by round and slot. The seven blanks in round five are picks that
+    were never made.</p>
+<div class="tablewrap"><table class="board"><thead><tr><th class="corner">RD</th>
+<th class="bh"><span>1</span></th>
+<th class="bh"><span>2</span></th>
+<th class="bh"><span>3</span></th>
+<th class="bh"><span>4</span></th>
+<th class="bh"><span>5</span></th>
+<th class="bh"><span>6</span></th>
+<th class="bh"><span>7</span></th>
+<th class="bh"><span>8</span></th>
+<th class="bh"><span>9</span></th>
+<th class="bh"><span>10</span></th>
+<th class="bh"><span>11</span></th>
+<th class="bh"><span>12</span></th>
+</tr></thead><tbody>
+<tr><th class="br">1</th>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Sam — Jeremiyah Love (RB), board 1 vs pick 1"><b>Love</b><i>Sam</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Glen — Carnell Tate (WR), board 3 vs pick 2"><b>Tate</b><i>Glen</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Teague — Jordyn Tyson (WR), board 4 vs pick 3"><b>Tyson</b><i>Teague</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Kelly — Jadarian Price (RB), board 2 vs pick 4"><b>Price</b><i>Kelly</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Justin — KC Concepcion (WR), board 8 vs pick 5"><b>Concepcion</b><i>Justin</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Daniel — Makai Lemon (WR), board 5 vs pick 6"><b>Lemon</b><i>Daniel</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Corey — Omar Cooper (WR), board 18 vs pick 7"><b>Cooper</b><i>Corey</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Blue — Kenyon Sadiq (TE), board 7 vs pick 8"><b>Sadiq</b><i>Blue</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Andrew — Fernando Mendoza (QB), board 6 vs pick 9"><b>Mendoza</b><i>Andrew</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Kevin — Jonah Coleman (RB), board 11 vs pick 10"><b>Coleman</b><i>Kevin</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Corey — Nicholas Singleton (RB), board 22 vs pick 11"><b>Singleton</b><i>Corey</i></td>
+<td style="background:rgba(230,138,124,.32);color:#EDEFEF" title="Matt — Zachariah Branch (WR), board 26 vs pick 12"><b>Branch</b><i>Matt</i></td>
+</tr>
+<tr><th class="br">2</th>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Glen — Eli Stowers (TE), board 15 vs pick 13"><b>Stowers</b><i>Glen</i></td>
+<td style="background:rgba(230,138,124,.32);color:#EDEFEF" title="Glen — Germie Bernard (WR), board 28 vs pick 14"><b>Bernard</b><i>Glen</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Teague — Ja&#x27;Kobi Lane (WR), board 16 vs pick 15"><b>Lane</b><i>Teague</i></td>
+<td style="background:rgba(255,255,255,.05);color:#9FA8AB" title="Kelly — Tim Tebow (TE)"><b>Tebow</b><i>Kelly</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Justin — De&#x27;Zhaun Stribling (WR), board 10 vs pick 17"><b>Stribling</b><i>Justin</i></td>
+<td style="background:rgba(230,138,124,.32);color:#EDEFEF" title="Daniel — Brenen Thompson (WR), board 45 vs pick 18"><b>Thompson</b><i>Daniel</i></td>
+<td style="background:rgba(230,138,124,.32);color:#EDEFEF" title="Blue — Chris Bell (WR), board 33 vs pick 19"><b>Bell</b><i>Blue</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Blue — Malachi Fields (WR), board 31 vs pick 20"><b>Fields</b><i>Blue</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Andrew — Emmett Johnson (RB), board 9 vs pick 21"><b>Johnson</b><i>Andrew</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Blue — Antonio Williams (WR), board 19 vs pick 22"><b>Williams</b><i>Blue</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Justin — Elijah Sarratt (WR), board 32 vs pick 23"><b>Sarratt</b><i>Justin</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Blue — Ty Simpson (QB), board 35 vs pick 24"><b>Simpson</b><i>Blue</i></td>
+</tr>
+<tr><th class="br">3</th>
+<td style="background:rgba(230,138,124,.32);color:#EDEFEF" title="Sam — Skyler Bell (WR), board 41 vs pick 25"><b>Bell</b><i>Sam</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Glen — Jalen Nailor (WR), board 23 vs pick 26"><b>Nailor</b><i>Glen</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Teague — Aaron Rodgers (QB), board 27 vs pick 27"><b>Rodgers</b><i>Teague</i></td>
+<td style="background:rgba(255,255,255,.05);color:#9FA8AB" title="Kelly — Cole Kelley (QB)"><b>Kelley</b><i>Kelly</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Creger — Demond Claiborne (RB), board 24 vs pick 29"><b>Claiborne</b><i>Creger</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Daniel — Caleb Douglas (WR), board 30 vs pick 30"><b>Douglas</b><i>Daniel</i></td>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Sam — Ted Hurst (WR), board 29 vs pick 31"><b>Hurst</b><i>Sam</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Blue — Chris Brazzell (WR), board 42 vs pick 32"><b>Brazzell</b><i>Blue</i></td>
+<td style="background:rgba(253,187,48,.44);color:#0B1315;font-weight:700" title="Andrew — Braelon Allen (RB), board 13 vs pick 33"><b>Allen</b><i>Andrew</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Kevin — Kaytron Allen (RB), board 20 vs pick 34"><b>Allen</b><i>Kevin</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Creger — Kaelon Black (RB), board 21 vs pick 35"><b>Black</b><i>Creger</i></td>
+<td style="background:rgba(230,138,124,.16);color:#EDEFEF" title="Justin — Oscar Delp (TE), board 43 vs pick 36"><b>Delp</b><i>Justin</i></td>
+</tr>
+<tr><th class="br">4</th>
+<td style="background:rgba(255,255,255,.045);color:#C5C6C8" title="Sam — Eli Raridon (TE), board 40 vs pick 37"><b>Raridon</b><i>Sam</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Glen — San Francisco 49ers (DEF)"><b>SF</b><i>Glen</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Teague — Anders Carlson (K), board 46 vs pick 39"><b>Carlson</b><i>Teague</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Kelly — Jack Podlesny (K), board 39 vs pick 40"><b>Podlesny</b><i>Kelly</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Justin — Tanner Brown (K), board 48 vs pick 41"><b>Brown</b><i>Justin</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Daniel — Christopher Dunn (K)"><b>Dunn</b><i>Daniel</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Corey — Trey Wolff (K), board 47 vs pick 43"><b>Wolff</b><i>Corey</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Blue — Matthew Trickett (K), board 38 vs pick 44"><b>Trickett</b><i>Blue</i></td>
+<td style="background:rgba(253,187,48,.44);color:#0B1315;font-weight:700" title="Andrew — Cyrus Allen (WR), board 25 vs pick 45"><b>Allen</b><i>Andrew</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Kevin — Drew Allar (QB), board 37 vs pick 46"><b>Allar</b><i>Kevin</i></td>
+<td style="background:rgba(253,187,48,.44);color:#0B1315;font-weight:700" title="Creger — Malik Willis (QB), board 12 vs pick 47"><b>Willis</b><i>Creger</i></td>
+<td style="background:rgba(253,187,48,.44);color:#0B1315;font-weight:700" title="Matt — Keaton Mitchell (RB), board 17 vs pick 48"><b>Mitchell</b><i>Matt</i></td>
+</tr>
+<tr><th class="br">5</th>
+<td style="background:rgba(253,187,48,.44);color:#0B1315;font-weight:700" title="Sam — Mike Washington (RB), board 14 vs pick 49"><b>Washington</b><i>Sam</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Kevin — Justin Joly (TE), board 44 vs pick 50"><b>Joly</b><i>Kevin</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Creger — Greg Dulcich (TE), board 34 vs pick 51"><b>Dulcich</b><i>Creger</i></td>
+<td style="background:rgba(253,187,48,.20);color:#EDEFEF" title="Sam — Carson Beck (QB), board 36 vs pick 52"><b>Beck</b><i>Sam</i></td>
+<td style="background:rgba(255,255,255,.03);color:#6E787C" title="Creger — Los Angeles Chargers (DEF)"><b>LAC</b><i>Creger</i></td>
+<td class="unmade" title="pick never made">—</td>
+<td class="unmade" title="pick never made">—</td>
+<td class="unmade" title="pick never made">—</td>
+<td class="unmade" title="pick never made">—</td>
+<td class="unmade" title="pick never made">—</td>
+<td class="unmade" title="pick never made">—</td>
+<td class="unmade" title="pick never made">—</td>
+</tr>
+</tbody></table></div>
+  <div class="legend">
+    <span><i class="sw" style="background:rgba(253,187,48,.44)"></i>fell to you</span>
+    <span><i class="sw" style="background:rgba(255,255,255,.045)"></i>about right</span>
+    <span><i class="sw" style="background:rgba(230,138,124,.32)"></i>you reached</span>
+    <span><i class="sw" style="background:rgba(255,255,255,.03)"></i>kicker or defense</span>
+  </div>
+  <div class="note" style="margin-top:20px">
+    Hover a square to see the player, the manager and where the board had him. On a phone, tap it.
+  </div>
+</div></section>
+
+<!-- ============ REACHES ============ -->
+<section><div class="wrap">
+  <h2><span class="n">04</span>Reaches and steals</h2>
+  <p class="sub">Kickers and defenses are left out, because Sleeper rates them generously and
+    all twelve of you correctly ignored that.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="meta">BIGGEST REACH</div>
+      <h3>Daniel takes Brenen Thompson at 18</h3>
+      <p>The board had him 45th, which is twenty-seven slots in a draft that only ran to
+        fifty-three picks.</p>
+    </div>
+    <div class="card">
+      <div class="meta">BIGGEST STEAL</div>
+      <h3>Creger takes Malik Willis at 47</h3>
+      <p>The board had him 12th. Sam matched the same thirty-five slot swing two picks later
+        with Mike Washington at 49.</p>
+    </div>
+    <div class="card">
+      <div class="meta">THE OTHER REACHES</div>
+      <h3>Sam +16, Matt +14, Glen +14</h3>
+      <p>Skyler Bell went at 25 with the board at 41, Zachariah Branch at 12 with the board at
+        26, and Germie Bernard at 14 with the board at 28.</p>
+    </div>
+    <div class="card">
+      <div class="meta">THE OTHER STEALS</div>
+      <h3>Matt -31, Andrew -20</h3>
+      <p>Keaton Mitchell went at 48 with the board at 17, and Braelon Allen at 33 with the board
+        at 13. Andrew took the second-best value in the draft with four picks and no trades.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ ROUND FOUR ============ -->
+<section><div class="wrap">
+  <h2><span class="n">05</span>Round four happened</h2>
+  <p class="sub">Picks 38 through 44 went, in order, San Francisco defense, Anders Carlson,
+    Jack Podlesny, Tanner Brown, Christopher Dunn, Trey Wolff, Matthew Trickett.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="meta">SEVEN CONSECUTIVE PICKS</div>
+      <h3>No skill player was taken</h3>
+      <p>A defense and then six straight kickers. Glen, Teague, Kelly, Justin, Daniel, Corey and
+        Blue all took their turn.</p>
+    </div>
+    <div class="card">
+      <div class="meta">THE DRAFT THEN STOPPED</div>
+      <h3>Fifty-three of sixty</h3>
+      <p>Round five produced five picks across eight days and the remaining seven were never
+        made. Creger used two of the five.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ CAPITAL ============ -->
+<section><div class="wrap">
+  <h2><span class="n">06</span>Whose picks were these</h2>
+  <p class="sub">Fourteen of the picks had already changed hands before the draft opened.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="meta">MOST SWINGS</div>
+      <h3>Blue, seven picks</h3>
+      <p>He bought seconds off Matt, Corey and Kevin. He owns the best record in league history
+        and has not won a title since 2017, so the accumulation is at least consistent.</p>
+    </div>
+    <div class="card">
+      <div class="meta">FEWEST SWINGS</div>
+      <h3>Matt, two picks</h3>
+      <p>He sold his second to Blue and his third to Justin, then drafted twice. He is also the
+        defending champion, which is the only defence available here.</p>
+    </div>
+    <div class="card">
+      <div class="meta">BOUGHT LOW</div>
+      <h3>Creger collected round five</h3>
+      <p>He took Teague's fifth and Justin's fifth, and round five was where the two best values
+        of the draft were still sitting.</p>
+    </div>
+    <div class="card">
+      <div class="meta">DID NOT PARTICIPATE</div>
+      <h3>Andrew, four picks, all his own</h3>
+      <p>One trade in eleven seasons and none of them this year. He still finished with the
+        second-best value in the draft.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ PREDICTIONS ============ -->
+<section><div class="wrap">
+  <h2><span class="n">07</span>Predictions, on the record</h2>
+  <p class="sub">These were written in September and get graded in next year's State of the League.</p>
+  <div class="preds">
+    <div class="pred"><b>Tim Tebow does not appear in a starting lineup all season.</b> Kelly
+      will insist that was always the plan.</div>
+    <div class="pred"><b>Jeremiyah Love finishes as a top-twelve back</b> and Sam still misses
+      the playoffs.</div>
+    <div class="pred"><b>Aaron Rodgers is dropped before Week 6</b> and Teague drafts a
+      42-year-old again next August.</div>
+    <div class="pred"><b>Creger's five picks outproduce Blue's seven</b>, because that is what
+      the last eleven years have been.</div>
+    <div class="pred"><b>Blue finishes with a top-three record and does not reach the final.</b></div>
+    <div class="pred"><b>Andrew makes his second career trade</b> and the league stops to
+      watch it happen.</div>
+    <div class="pred"><b>Matt's two picks are worth more than Corey's three.</b></div>
+    <div class="pred"><b>At least four of the six kickers taken in round four are dropped by
+      Week 3.</b></div>
+  </div>
+</div></section>
+
+<!-- ============ CLOSE ============ -->
+<section><div class="wrap">
+  <h2><span class="n">08</span>So that happened</h2>
+  <p class="dek" style="max-width:70ch">Fifty-three picks were made across eight days, fourteen
+    of them with borrowed capital, seven of them kickers and defenses in a single run. The best
+    value in the draft went to the manager with the most titles, and the second pick of the
+    second round went to Tim Tebow.</p>
+  <div class="note" style="margin-top:26px">
+    The eleven-season record book is on the
+    <a href="index.html" style="color:var(--gold)">State of the League</a> page. Screenshot the
+    predictions you hate.
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>September 2026. Fifty-three picks, one of them Tim Tebow. Hootie Hoo y'all.</p>
+</div></footer>
+
+<script>
+(function(){
+  var cells=[].slice.call(document.querySelectorAll('.board td[title]'));
+  if(!cells.length) return;
+  cells.forEach(function(c){ c.setAttribute('data-tip',c.getAttribute('title')); c.removeAttribute('title'); });
+  var tip=document.createElement('div'); tip.className='bt'; document.body.appendChild(tip);
+  var cur=null;
+  function parse(raw){
+    var mgr='',rest=raw,meta='';
+    var i=raw.indexOf(' \u2014 ');
+    if(i>-1){ mgr=raw.slice(0,i); rest=raw.slice(i+3); }
+    var j=rest.indexOf(', board ');
+    if(j>-1){ meta=rest.slice(j+2); rest=rest.slice(0,j); }
+    return {player:rest,mgr:mgr,meta:meta};
+  }
+  function show(c){
+    if(cur===c) return; cur=c;
+    var d=parse(c.getAttribute('data-tip')||'');
+    tip.textContent='';
+    var p=document.createElement('span'); p.className='p'; p.textContent=d.player; tip.appendChild(p);
+    if(d.mgr){var m=document.createElement('span');m.className='m';m.textContent=d.mgr;tip.appendChild(m);}
+    if(d.meta){var s=document.createElement('span');s.className='s';s.textContent=d.meta;tip.appendChild(s);}
+    tip.classList.add('on');
+  }
+  function hide(){cur=null;tip.classList.remove('on');
+    document.querySelectorAll('.board td.lit').forEach(function(x){x.classList.remove('lit');});}
+  function place(x,y){
+    var r=tip.getBoundingClientRect(),pad=14,left=x+pad,top=y+pad;
+    if(left+r.width>window.innerWidth-8) left=x-r.width-pad;
+    if(top+r.height>window.innerHeight-8) top=y-r.height-pad;
+    tip.style.left=Math.max(8,left)+'px'; tip.style.top=Math.max(8,top)+'px';
+  }
+  cells.forEach(function(c){
+    var over=function(e){ show(c); place(e.clientX,e.clientY); };
+    c.addEventListener('mouseenter',over); c.addEventListener('mouseover',over);
+    c.addEventListener('mousemove',over); c.addEventListener('mouseleave',hide);
+    c.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(cur===c){hide();return;}
+      hide(); c.classList.add('lit'); show(c);
+      var b=c.getBoundingClientRect(); place(b.left+b.width/2,b.bottom-6);
+    });
+  });
+  document.addEventListener('click',hide);
+  window.addEventListener('scroll',hide,{passive:true});
+})();
+</script>
+
+</body>
+</html>
